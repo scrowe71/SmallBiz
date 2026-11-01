@@ -201,3 +201,6 @@ details p { color: var(--muted); margin: 0 0 1.25rem; max-width: 60ch; }
 .legal p, .legal li { color: var(--muted); max-width: 65ch; }
 .legal strong { color: var(--text); }
 .legal ul { padding-left: 1.25rem; }
+
+/* Footer version stamp: bump it on every release to confirm dev and main are in sync */
+.version { color: var(--muted); font-size: 0.85rem; margin-left: 1rem; opacity: 0.85; }
