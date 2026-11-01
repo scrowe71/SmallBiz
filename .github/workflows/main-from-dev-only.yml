@@ -1,0 +1,18 @@
+name: Main accepts changes from dev only
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  require-dev-source:
+    name: require-dev-source
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail unless the pull request comes from dev
+        run: |
+          if [ "${{ github.head_ref }}" != "dev" ]; then
+            echo "Pull requests into main must come from the dev branch (this one is from '${{ github.head_ref }}')."
+            exit 1
+          fi
+          echo "Source branch is dev. OK."
