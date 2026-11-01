@@ -1,14 +1,17 @@
 /* Dark theme, no external dependencies. Edit the colors in :root to restyle. */
 :root {
-  --bg: #0e141b;
-  --surface: #151d27;
-  --raised: #1b2531;
-  --line: #2f3d4f;
-  --text: #e8edf3;
-  --muted: #aab6c5;
-  --accent: #e4b24c;
-  --accent-ink: #181203;
-  --focus: #8fd0ff;
+  /* Palette: Indiana Red, Clean White, Charcoal, Steel (page background is a deepened charcoal) */
+  --bg: #0f1623;
+  --surface: #172033;
+  --raised: #1e293b;
+  --line: #334155;
+  --text: #f4f4f4;
+  --muted: #94a3b8;
+  --accent: #e63946;        /* fills, borders, large shapes */
+  --accent-text: #ff5a66;   /* red for small text and links (passes AA on dark) */
+  --accent-strong: #cf2f3d; /* button fills (white text passes AA) */
+  --accent-ink: #f4f4f4;
+  --focus: #94a3b8;
   --radius: 10px;
   --sans: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, system-ui, sans-serif;
   --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
@@ -29,7 +32,7 @@ body {
 
 img, svg { max-width: 100%; display: block; }
 
-a { color: var(--accent); text-underline-offset: 3px; }
+a { color: var(--accent-text); text-underline-offset: 3px; }
 a:hover { text-decoration-thickness: 2px; }
 
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
@@ -44,7 +47,7 @@ a:hover { text-decoration-thickness: 2px; }
 
 .skip {
   position: absolute; left: 1rem; top: -4rem;
-  background: var(--accent); color: var(--accent-ink);
+  background: var(--accent-strong); color: var(--accent-ink);
   padding: 0.6rem 1rem; border-radius: 6px; z-index: 10; font-weight: 600;
 }
 .skip:focus { top: 1rem; }
@@ -60,13 +63,13 @@ a:hover { text-decoration-thickness: 2px; }
 /* Buttons */
 .btn {
   display: inline-block;
-  background: var(--accent); color: var(--accent-ink);
+  background: var(--accent-strong); color: var(--accent-ink);
   font: inherit; font-weight: 700;
   padding: 0.85rem 1.4rem; min-height: 48px;
   border: 0; border-radius: var(--radius);
   text-decoration: none; cursor: pointer;
 }
-.btn:hover { background: #f0c166; }
+.btn:hover { background: #b42532; }
 .btn-small { padding: 0.5rem 1rem; min-height: 40px; }
 
 /* Hero */
@@ -90,7 +93,7 @@ h1 {
 .ledger dl > div { display: grid; grid-template-columns: minmax(5.5rem, 7.5rem) minmax(0, 1fr); gap: 0.75rem; padding-block: 0.85rem; border-top: 1px solid var(--line); }
 .ledger dt { color: var(--muted); }
 .ledger dd { margin: 0; display: flex; flex-direction: column; gap: 0.15rem; }
-.owner { color: var(--accent); font-size: 0.92rem; font-weight: 600; }
+.owner { color: var(--accent-text); font-size: 0.92rem; font-weight: 600; }
 
 /* Sections */
 .section { padding-block: clamp(2.75rem, 6vw, 4.5rem); }
@@ -114,7 +117,7 @@ p { margin-top: 0; }
   content: counter(step);
   position: absolute; left: 0; top: 0;
   width: 2.6rem; height: 2.6rem; border-radius: 50%;
-  border: 2px solid var(--accent); color: var(--accent);
+  border: 2px solid var(--accent); color: var(--accent-text);
   display: grid; place-items: center; font-weight: 700;
 }
 
@@ -153,7 +156,7 @@ summary {
 summary::-webkit-details-marker { display: none; }
 summary::after {
   content: "+"; position: absolute; right: 0.25rem; top: 0.9rem;
-  color: var(--accent); font-size: 1.5rem; line-height: 1; font-weight: 400;
+  color: var(--accent-text); font-size: 1.5rem; line-height: 1; font-weight: 400;
 }
 details[open] summary::after { content: "\2212"; }
 details p { color: var(--muted); margin: 0 0 1.25rem; max-width: 60ch; }
@@ -170,7 +173,7 @@ details p { color: var(--muted); margin: 0 0 1.25rem; max-width: 60ch; }
 .form input:focus-visible, .form textarea:focus-visible { outline-offset: 1px; border-color: var(--focus); }
 .form .btn { justify-self: start; margin-top: 1rem; }
 .trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-.form-status { margin: 0.5rem 0 0; color: var(--accent); min-height: 1.6em; }
+.form-status { margin: 0.5rem 0 0; color: var(--accent-text); min-height: 1.6em; }
 
 /* Footer */
 .site-footer { border-top: 1px solid var(--line); padding-block: 2rem; color: var(--muted); }
