@@ -1,0 +1,193 @@
+/* Dark theme, no external dependencies. Edit the colors in :root to restyle. */
+:root {
+  --bg: #0e141b;
+  --surface: #151d27;
+  --raised: #1b2531;
+  --line: #2f3d4f;
+  --text: #e8edf3;
+  --muted: #aab6c5;
+  --accent: #e4b24c;
+  --accent-ink: #181203;
+  --focus: #8fd0ff;
+  --radius: 10px;
+  --sans: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+img, svg { max-width: 100%; display: block; }
+
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+
+.wrap { width: min(1080px, 100% - 2.5rem); margin-inline: auto; }
+.narrow .faq { max-width: 760px; }
+.measure { max-width: 60ch; color: var(--muted); }
+.mono { font-family: var(--mono); font-size: 0.95em; color: var(--text); overflow-wrap: anywhere; }
+
+/* Placeholders stand out so none are missed before launch */
+.ph { border-bottom: 1px dashed var(--accent); }
+
+.skip {
+  position: absolute; left: 1rem; top: -4rem;
+  background: var(--accent); color: var(--accent-ink);
+  padding: 0.6rem 1rem; border-radius: 6px; z-index: 10; font-weight: 600;
+}
+.skip:focus { top: 1rem; }
+
+/* Header */
+.site-header { border-bottom: 1px solid var(--line); background: var(--bg); }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 0.9rem; flex-wrap: wrap; }
+.brand { color: var(--text); font-weight: 700; font-size: 1.15rem; text-decoration: none; letter-spacing: -0.01em; }
+.site-header nav { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+.site-header nav a:not(.btn) { color: var(--muted); text-decoration: none; }
+.site-header nav a:not(.btn):hover { color: var(--text); text-decoration: underline; }
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  background: var(--accent); color: var(--accent-ink);
+  font: inherit; font-weight: 700;
+  padding: 0.85rem 1.4rem; min-height: 48px;
+  border: 0; border-radius: var(--radius);
+  text-decoration: none; cursor: pointer;
+}
+.btn:hover { background: #f0c166; }
+.btn-small { padding: 0.5rem 1rem; min-height: 40px; }
+
+/* Hero */
+.hero { padding-block: clamp(3rem, 8vw, 6rem); }
+.hero-grid { display: grid; gap: 2.5rem; align-items: center; }
+.hero-grid > * { min-width: 0; }
+h1 {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2.1rem, 5.2vw, 3.5rem);
+  line-height: 1.08; letter-spacing: -0.025em; font-weight: 750;
+  max-width: 17ch;
+}
+.lead { font-size: clamp(1.1rem, 2vw, 1.3rem); color: var(--muted); max-width: 52ch; margin: 0 0 1.75rem; }
+
+.ledger {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 1.5rem;
+}
+.ledger h2 { margin: 0 0 1rem; font-size: 1.05rem; font-weight: 700; }
+.ledger dl { margin: 0; }
+.ledger dl > div { display: grid; grid-template-columns: minmax(5.5rem, 7.5rem) minmax(0, 1fr); gap: 0.75rem; padding-block: 0.85rem; border-top: 1px solid var(--line); }
+.ledger dt { color: var(--muted); }
+.ledger dd { margin: 0; display: flex; flex-direction: column; gap: 0.15rem; }
+.owner { color: var(--accent); font-size: 0.92rem; font-weight: 600; }
+
+/* Sections */
+.section { padding-block: clamp(2.75rem, 6vw, 4.5rem); }
+.section.alt { background: var(--surface); border-block: 1px solid var(--line); }
+h2 { margin: 0 0 1rem; font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; letter-spacing: -0.015em; font-weight: 700; }
+h3 { margin: 0 0 0.4rem; font-size: 1.15rem; line-height: 1.3; font-weight: 700; }
+p { margin-top: 0; }
+
+.two-col { display: grid; gap: 1.75rem; align-items: start; }
+
+/* Problems */
+.problems { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: 1.5rem; }
+.problems li { border-left: 3px solid var(--accent); padding-left: 1.1rem; }
+.problems p, .steps p, .plan p, .why li { color: var(--muted); }
+.problems p, .steps p { margin-bottom: 0; max-width: 46ch; }
+
+/* Steps */
+.steps { margin: 1.5rem 0 0; padding: 0; list-style: none; counter-reset: step; display: grid; gap: 1.5rem; }
+.steps li { counter-increment: step; position: relative; padding-left: 3.6rem; }
+.steps li::before {
+  content: counter(step);
+  position: absolute; left: 0; top: 0;
+  width: 2.6rem; height: 2.6rem; border-radius: 50%;
+  border: 2px solid var(--accent); color: var(--accent);
+  display: grid; place-items: center; font-weight: 700;
+}
+
+/* Included */
+.checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.85rem; }
+.checks li { position: relative; padding-left: 2rem; }
+.checks li::before {
+  content: ""; position: absolute; left: 0.2rem; top: 0.35em;
+  width: 0.6rem; height: 1rem; border: solid var(--accent); border-width: 0 3px 3px 0;
+  transform: rotate(40deg);
+}
+
+/* Pricing */
+.plans { display: grid; gap: 1.25rem; margin-top: 1.75rem; }
+.plan { background: var(--raised); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; }
+.plan.featured { border: 2px solid var(--accent); }
+.price { color: var(--text) !important; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; }
+.plan p:last-child { margin-bottom: 0; }
+.note { margin: 1.5rem 0 0; color: var(--muted); }
+
+/* Why */
+.why { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: 1rem; max-width: 62ch; }
+.why strong { color: var(--text); }
+
+/* Example */
+.seework { border: 1px dashed var(--line); border-radius: var(--radius); padding: 1.25rem 1.5rem; }
+.seework p:last-child { margin-bottom: 0; }
+
+/* FAQ */
+.faq { margin-top: 1.25rem; border-top: 1px solid var(--line); }
+details { border-bottom: 1px solid var(--line); }
+summary {
+  cursor: pointer; list-style: none; padding: 1.1rem 2.5rem 1.1rem 0; position: relative;
+  font-weight: 600; min-height: 48px;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after {
+  content: "+"; position: absolute; right: 0.25rem; top: 0.9rem;
+  color: var(--accent); font-size: 1.5rem; line-height: 1; font-weight: 400;
+}
+details[open] summary::after { content: "\2212"; }
+details p { color: var(--muted); margin: 0 0 1.25rem; max-width: 60ch; }
+
+/* Form */
+.form { display: grid; gap: 0.5rem; }
+.form label { font-weight: 600; margin-top: 0.6rem; }
+.form input, .form textarea {
+  width: 100%; font: inherit; color: var(--text);
+  background: var(--bg); border: 1px solid #7d8da1; border-radius: 8px;
+  padding: 0.75rem 0.9rem; min-height: 48px;
+}
+.form textarea { resize: vertical; }
+.form input:focus-visible, .form textarea:focus-visible { outline-offset: 1px; border-color: var(--focus); }
+.form .btn { justify-self: start; margin-top: 1rem; }
+.form-status { margin: 0.5rem 0 0; color: var(--accent); min-height: 1.6em; }
+
+/* Footer */
+.site-footer { border-top: 1px solid var(--line); padding-block: 2rem; color: var(--muted); }
+.foot { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.foot p { margin: 0; }
+.foot a { color: var(--muted); margin-right: 1rem; }
+.foot a:last-child { margin-right: 0; }
+
+/* Wider screens */
+@media (min-width: 760px) {
+  .hero-grid { grid-template-columns: 1.15fr 1fr; gap: 3.5rem; }
+  .problems { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .steps { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .steps li { padding-left: 0; padding-top: 3.5rem; }
+  .plans { grid-template-columns: repeat(3, 1fr); }
+  .two-col { grid-template-columns: 1fr 1.1fr; gap: 3rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
