@@ -28,7 +28,7 @@ if (form) form.addEventListener('submit', async event => {
     const response = await fetch(form.action, {method: 'POST', body: new FormData(form), headers: {'Accept': 'application/json'}, signal: controller.signal});
     if (!response.ok) throw new Error('Submission failed');
     form.reset();
-    status.textContent = 'Thank you. Your request has been sent. We’ll reply with a plan and a fixed price.';
+    status.textContent = 'Thank you. Your request has been sent. Someone will reach out to you soon.';
   } catch {
     status.textContent = 'We couldn’t confirm your request was sent. Your details are still here. Please try again or email info@smallbizdigitalsolutions.com.';
   } finally {
