@@ -28,7 +28,7 @@ if (form) form.addEventListener('submit', async event => {
     const response = await fetch(form.action, {method: 'POST', body: new FormData(form), headers: {'Accept': 'application/json'}, signal: controller.signal});
     if (!response.ok) throw new Error('Submission failed');
     form.reset();
-    status.textContent = 'Thank you. Your request has been sent. We’ll reply with a plan and a fixed price.';
+    status.textContent = 'Thank you. Your request has been sent. Someone will reach out to you soon.';
   } catch {
     status.textContent = 'We couldn’t confirm your request was sent. Your details are still here. Please try again or email info@smallbizdigitalsolutions.com.';
   } finally {
@@ -37,3 +37,15 @@ if (form) form.addEventListener('submit', async event => {
     submit.textContent = 'Send request';
   }
 });
+
+// Label every non-production copy of the site (dev preview, other previews, local files) so it is never mistaken for the live site.
+(() => {
+  const live = ['smallbizdigitalsolutions.com', 'www.smallbizdigitalsolutions.com', 'smallbiz-3s5.pages.dev'];
+  if (live.includes(location.hostname)) return;
+  document.querySelectorAll('.version').forEach(version => {
+    const note = document.createElement('span');
+    note.className = 'env-note';
+    note.textContent = 'Development';
+    version.insertAdjacentElement('afterend', note);
+  });
+})();
