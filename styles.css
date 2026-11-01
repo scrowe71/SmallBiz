@@ -169,6 +169,7 @@ details p { color: var(--muted); margin: 0 0 1.25rem; max-width: 60ch; }
 .form textarea { resize: vertical; }
 .form input:focus-visible, .form textarea:focus-visible { outline-offset: 1px; border-color: var(--focus); }
 .form .btn { justify-self: start; margin-top: 1rem; }
+.trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .form-status { margin: 0.5rem 0 0; color: var(--accent); min-height: 1.6em; }
 
 /* Footer */
