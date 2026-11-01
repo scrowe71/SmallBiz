@@ -18,6 +18,9 @@ const form = document.querySelector('#quote-form');
 if (form) form.addEventListener('submit', async event => {
   event.preventDefault();
   const status = document.querySelector('#form-status');
+  const interest = form.querySelector('#interest');
+  const subject = form.querySelector('[name="_subject"]');
+  if (interest && subject && interest.value) subject.value = 'Quote request: ' + interest.value;
   const submit = form.querySelector('[type="submit"]');
   submit.disabled = true;
   submit.textContent = 'Sending…';

@@ -305,14 +305,25 @@
 <input type="email" id="email" name="email" autocomplete="email" required maxlength="254">
 </div>
 <div class="field full">
-<label for="business">Business name <span class="accent" aria-hidden="true">·</span> optional</label>
-<input id="business" name="business" autocomplete="organization" maxlength="180">
+<label for="business">Business name</label>
+<input id="business" name="business" autocomplete="organization" required maxlength="180">
+</div>
+<div class="field full">
+<label for="interest">What are you interested in?</label>
+<select id="interest" name="interest" required>
+<option value="" disabled selected>Choose one…</option>
+<option>General Inquiry</option>
+<option>Launch Kit</option>
+<option>Email-Only Setup</option>
+<option>Monthly Care Plan</option>
+</select>
 </div>
 <div class="field full">
 <label for="message">What do you need?</label>
 <textarea id="message" name="message" required maxlength="5000" rows="5" placeholder="A new website, business email, or help with an existing setup…">
 </textarea>
 </div>
+<input type="hidden" name="_subject" value="New quote request">
 <div class="honeypot" aria-hidden="true">
 <label for="website-check">Leave this field blank</label>
 <input id="website-check" name="_gotcha" tabindex="-1" autocomplete="off">
@@ -330,7 +341,7 @@
 </main>
 <footer class="site-footer">
 <div class="wrap footer-inner">
-<p class="footer-copy">© 2026 Small Biz Digital Solutions<br>Your business. Your accounts.<br><span class="version">v1.3.7 · 2026-11-01</span></p>
+<p class="footer-copy">© 2026 Small Biz Digital Solutions<br>Your business. Your accounts.<br><span class="version">v1.3.9 · 2026-11-01</span></p>
 <div class="footer-links">
 <a href="mailto:info@smallbizdigitalsolutions.com">Email us</a>
 <a href="privacy.html">Privacy</a>
