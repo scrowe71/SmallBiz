@@ -37,3 +37,15 @@ if (form) form.addEventListener('submit', async event => {
     submit.textContent = 'Send request';
   }
 });
+
+// Label every non-production copy of the site (dev preview, other previews, local files) so it is never mistaken for the live site.
+(() => {
+  const live = ['smallbizdigitalsolutions.com', 'www.smallbizdigitalsolutions.com', 'smallbiz-3s5.pages.dev'];
+  if (live.includes(location.hostname)) return;
+  document.querySelectorAll('.version').forEach(version => {
+    const note = document.createElement('span');
+    note.className = 'env-note';
+    note.textContent = 'Development';
+    version.insertAdjacentElement('afterend', note);
+  });
+})();
